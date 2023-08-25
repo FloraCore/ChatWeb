@@ -1,21 +1,28 @@
-import { Link, Outlet } from 'umi';
-import styles from './index.less';
+import {Outlet} from 'umi';
+import React from "react";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+import {Container, CssBaseline} from "@mui/material";
 
 export default function Layout() {
-  return (
-    <div className={styles.navs}>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/docs">Docs</Link>
-        </li>
-        <li>
-          <a href="https://github.com/umijs/umi">Github</a>
-        </li>
-      </ul>
-      <Outlet />
-    </div>
-  );
+    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+    const theme = React.useMemo(
+        () =>
+            createTheme({
+                palette: {
+                    mode: prefersDarkMode ? 'dark' : 'light',
+                },
+            }),
+        [prefersDarkMode],
+    );
+    return (
+        <ThemeProvider theme={theme}>
+            <CssBaseline/>
+            <Container maxWidth="xl">
+                <br/>
+                <Outlet/>
+            </Container>
+        </ThemeProvider>
+    );
 }
