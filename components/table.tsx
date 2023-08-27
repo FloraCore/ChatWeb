@@ -6,7 +6,7 @@ import {DownOutlined} from "@ant-design/icons";
 import React, {useState} from "react";
 
 export default function ServerTableComponent({data, metadata}: ChatData) {
-    const [expanded, setExpanded] = useState([]);
+    const [expanded, setExpanded] = useState<React.Key[]>([]);
 
     const onExpand = (expandedKeysValue: React.Key[]) => {
         setExpanded(expandedKeysValue);
@@ -82,7 +82,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
                 <Card title={"详细信息"} style={{width: 1000}}>
                     <Tree
                         showLine
-                        switcherIcon={<DownOutlined/>}
+                        switcherIcon={<DownOutlined rev={undefined}></DownOutlined>}
                         treeData={treeData}
                         expandedKeys={expanded}
                         onExpand={onExpand}
