@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ant-design/pro-components": "^2.6.13",
     "antd": "^5.8.4",
     "copy-to-clipboard": "^3.3.3",
     "next": "12.2.5",

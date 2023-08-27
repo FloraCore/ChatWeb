@@ -5,20 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0d9bdb7-9b44-4d2b-be8d-3119854bd9ff" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/[cid]/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/about.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/[cid]/[sid].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[cid]/[sid].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/[cid]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[cid]/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/post/[id]/[comment].tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/post/[id]/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <list id="5d585853-52eb-4a42-be2c-ddfe5f634927" name="zrll 进行的更改" comment="">
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/[cid]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/[cid]/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -51,10 +47,16 @@
     </option>
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/pages/index.tsx">
+    <file path="$PROJECT_DIR$/pages/[cid]/index.tsx">
       <ranges>
-        <range start1="0" end1="1" start2="0" end2="2" changelist="5d585853-52eb-4a42-be2c-ddfe5f634927" />
-        <range start1="3" end1="9" start2="4" end2="37" changelist="a0d9bdb7-9b44-4d2b-be8d-3119854bd9ff" />
+        <range start1="1" end1="2" start2="1" end2="2" changelist="a0d9bdb7-9b44-4d2b-be8d-3119854bd9ff" />
+        <range start1="5" end1="5" start2="5" end2="15" changelist="a0d9bdb7-9b44-4d2b-be8d-3119854bd9ff" />
+        <range start1="11" end1="13" start2="21" end2="23" changelist="5d585853-52eb-4a42-be2c-ddfe5f634927" />
+        <range start1="15" end1="23" start2="25" end2="45" changelist="5d585853-52eb-4a42-be2c-ddfe5f634927" />
+        <range start1="24" end1="26" start2="46" end2="52" changelist="5d585853-52eb-4a42-be2c-ddfe5f634927" />
+        <range start1="27" end1="61" start2="53" end2="87" changelist="5d585853-52eb-4a42-be2c-ddfe5f634927" />
+        <range start1="62" end1="75" start2="88" end2="103" changelist="5d585853-52eb-4a42-be2c-ddfe5f634927" />
+        <range start1="79" end1="82" start2="107" end2="109" changelist="5d585853-52eb-4a42-be2c-ddfe5f634927" />
       </ranges>
     </file>
   </component>
@@ -63,6 +65,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
@@ -106,7 +111,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1693126619202</updated>
-      <workItem from="1693126622458" duration="8993000" />
+      <workItem from="1693126622458" duration="13680000" />
     </task>
     <servers />
   </component>

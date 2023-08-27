@@ -19,20 +19,22 @@ export default function IndexPage() {
                 },
             }}
         >
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '100vh',
-        }}>
-            {contextHolder}
-                <Card title="FloraCore 聊天查看器" extra={<a href="/demo">查看演示</a>} style={{ width: 400, margin: 'auto'}}>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '100vh',
+            }}>
+                {contextHolder}
+                <Card title="FloraCore 聊天查看器" extra={<a href="/demo">查看演示</a>}
+                        style={{width: 400, margin: 'auto'}}>
                     <p>要生成详细聊天报告，请执行以下操作：</p>
-                    · 在游戏内或控制台中输入 <Button type="dashed" size={"small"} onClick={copyClick}>/fc chat [玩家名]</Button><br/>
+                    · 在游戏内或控制台中输入 <Button type="dashed" size={"small"} onClick={copyClick}>/fc chat
+                    [玩家名]</Button><br/>
                     · 执行需要权限到操作<br/>
                     · 打开生成到URL
                 </Card>
-        </div>
+            </div>
         </ConfigProvider>
     )
 }
