@@ -79,7 +79,7 @@ export default function IndexPage() {
                             messageApi.open({
                                 key: messageKey,
                                 type: 'error',
-                                content: '加载失败: 记录不存在',
+                                content: '加载失败: 链接无效',
                                 duration: 2,
                             }).then(() => {
                             });
