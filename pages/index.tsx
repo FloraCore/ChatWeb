@@ -27,7 +27,7 @@ export default function IndexPage() {
             }}>
                 {contextHolder}
                 <Card title="FloraCore 聊天查看器" extra={<a href="/demo">查看演示</a>}
-                        style={{width: 400, margin: 'auto'}}>
+                      style={{width: 400, margin: 'auto'}}>
                     <p>要生成详细聊天报告，请执行以下操作：</p>
                     · 在游戏内或控制台中输入 <Button type="dashed" size={"small"} onClick={copyClick}>/fc chat
                     [玩家名]</Button><br/>

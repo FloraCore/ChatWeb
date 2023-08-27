@@ -1,7 +1,7 @@
 import {List} from "antd";
 
 export default function ChatListComponent(data: chatListProps) {
-    return(
+    return (
         <>
             <List
                 size="small"
