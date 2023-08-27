@@ -29,17 +29,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
             key: '3',
             label: '上传时间',
             children: metadata.time,
-        },
-        {
-            key: '4',
-            label: '统计',
-            children: metadata.count.matched + "/" + metadata.count.total,
-        },
-        {
-            key: '5',
-            label: '状态',
-            children: metadata.truncated ? "丢失" : "正常",
-        },
+        }
     ];
 
     const treeData: DataNode[] = [];
