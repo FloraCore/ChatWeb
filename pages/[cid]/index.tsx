@@ -105,7 +105,6 @@ export default function IndexPage() {
     return (
         <>
             {contextHolder}
-            {state}
             {getComponent()}
         </>
     )
