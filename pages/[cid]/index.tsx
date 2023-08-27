@@ -1,7 +1,7 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {demoStr} from "../../data/demo";
-import {message} from "antd";
+import {ConfigProvider, message} from "antd";
 import ErrorComponent from "../../components/error";
 import {ChatData} from "../../data/chatData";
 import ServerTableComponent from "../../components/table";
@@ -104,8 +104,19 @@ export default function IndexPage() {
 
     return (
         <>
-            {contextHolder}
-            {getComponent()}
+            <ConfigProvider
+                theme={{
+                    token: {
+                        "borderRadius": 14,
+                        "colorPrimary": "#009292",
+                        "colorInfo": "#009292",
+                        "colorError": "#da4648",
+                    },
+                }}
+            >
+                {contextHolder}
+                {getComponent()}
+            </ConfigProvider>
         </>
     )
 }
