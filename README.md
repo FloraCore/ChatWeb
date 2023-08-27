@@ -1,40 +1,36 @@
-# Dynamic Routing example
+# FloraCore ChatWeb
 
-This example shows how to do [dynamic routing](https://nextjs.org/docs/routing/dynamic-routes) in Next.js. It contains
-two dynamic routes:
-
-1. `pages/post/[id]/index.js`
-    - e.g. matches `/post/my-example` (`/post/:id`)
-1. `pages/post/[id]/[comment].js`
-    - e.g. matches `/post/my-example/a-comment` (`/post/:id/:comment`)
-
-These routes are automatically matched by the server.
-You can use `next/link` as displayed in this example to route to these pages client side.
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or
-preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/dynamic-routing)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/dynamic-routing&project-name=dynamic-routing&repository-name=dynamic-routing)
+- This is a Web Page of Chat-Record-Query for [FloraCore](https://github.com/FloraCore/FloraCore).
 
 ## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
-with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/),
-or [pnpm](https://pnpm.io) to bootstrap the example:
+- Recommended build with  [`Yarn`](https://yarnpkg.com/).
 
 ```bash
-npx create-next-app --example dynamic-routing dynamic-routing-app
+# Install Packages.
+yarn install
 ```
 
 ```bash
-yarn create next-app --example dynamic-routing dynamic-routing-app
+# Run in developer mode.
+yarn dev
 ```
 
 ```bash
-pnpm create next-app --example dynamic-routing dynamic-routing-app
+# Build the Project.
+yarn run build
 ```
 
-Deploy it to the cloud
-with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## API Provider
+
+- [bytebin](https://github.com/FloraCore/bytebin)
+
+## Contributors
+
+- [zrll_](https://github.com/zrll12)
+- [Snowball_233](https://github.com/SnowballXueQiu)
+- [xLikeWATCHDOG](https://github.com/xLikeWATCHDOG)
+
+## License
+
+- [MIT](https://en.wikipedia.org/wiki/MIT_License)

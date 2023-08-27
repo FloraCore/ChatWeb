@@ -4,4 +4,4 @@ If you believe you have found a security vulnerability, we encourage you to let 
 
 We will investigate all legitimate reports and do our best to quickly fix the problem.
 
-Email `wangrb.qq@outlook.com` to disclose any security vulnerabilities.
+Email `wangrb.qq@outlook.com` or `bilibili.mer@outlook.com` to disclose any security vulnerabilities.
