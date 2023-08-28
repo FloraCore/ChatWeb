@@ -30,6 +30,7 @@ yarn run build
 - [zrll_](https://github.com/zrll12)
 - [Snowball_233](https://github.com/SnowballXueQiu)
 - [xLikeWATCHDOG](https://github.com/xLikeWATCHDOG)
+- [GaoNeng-wWw](https://github.com/GaoNeng-wWw)
 
 ## License
 
