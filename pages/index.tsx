@@ -4,7 +4,6 @@ import React from "react";
 import i18n from "../data/i18n";
 import Link from "next/link";
 
-const A = 1;
 export default function IndexPage() {
 
     const [messageApi, contextHolder] = message.useMessage();
