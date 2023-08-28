@@ -37,7 +37,7 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
 
         {
             label: t('header.chat-record'),
-            key: 'mail',
+            key: '0',
         },
         {
             label: (

@@ -3,6 +3,7 @@ import '../reset.css';
 import {AppProps} from 'next/app';
 import HeaderComponent from '../components/header';
 import { useState } from 'react';
+import Head from "next/head";
 
 function Entry({Component, pageProps}: AppProps) {
     const [dark, setDark] = useState(false);
@@ -22,6 +23,13 @@ function Entry({Component, pageProps}: AppProps) {
                     },
                 }}
             >
+                <Head>
+                    <meta charSet="UTF-8" />
+                    <html lang="en" />
+                    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+                    <title>FloraCore | 聊天记录查看器</title>
+                    <meta name="description" content="The Web Page of Chat-Record-Query for FloraCore by Next.js" />
+                </Head>
                 <Layout>
                     <Layout.Header style={{
                         background: dark ? '#141414' : colorBgContainer,
