@@ -109,33 +109,10 @@ export default function IndexPage() {
 
     return (
         <>
-            <ConfigProvider
-                theme={{
-                    algorithm: dark ? theme.darkAlgorithm : theme.defaultAlgorithm,
-                    token: {
-                        "borderRadius": 10,
-                        "colorPrimary": "#009292",
-                        "colorInfo": "#009292",
-                        "colorError": "#da4648",
-                    },
-                }}
-            >
-                <Layout>
-                    <Layout.Header style={{
-                        background: dark ? '#141414' : colorBgContainer,
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr'
-                    }}>
-                        <HeaderComponent setDark={setDark} dark={dark} colorBgContainer={colorBgContainer}/>
-                    </Layout.Header>
-                    <Layout.Content>
-                        {contextHolder}
-                        <div style={{position: "relative", top: 20}}>
-                            {getComponent()}
-                        </div>
-                    </Layout.Content>
-                </Layout>
-            </ConfigProvider>
+            {contextHolder}
+            <div style={{position: "relative", top: 20}}>
+                {getComponent()}
+            </div>
         </>
     )
 }
