@@ -1,11 +1,10 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {demoStr} from "../data/demo";
-import {ConfigProvider, Layout, message, theme} from "antd";
+import {message} from "antd";
 import ErrorComponent from "../components/error";
 import {ChatData} from "../data/chatData";
 import ServerTableComponent from "../components/table";
-import HeaderComponent from "../components/header";
 
 enum Status {
     Init,
@@ -22,12 +21,6 @@ export default function IndexPage() {
     const [data, setData] = useState<ChatData>();
     const [state, setLoadingState] = useState(Status.Init);
     const [messageApi, contextHolder] = message.useMessage();
-    const [dark, setDark] = useState(false);
-
-    const {
-        token: {colorBgContainer}
-    } = theme.useToken()
-
     const getComponent = () => {
         switch (state) {
             case Status.Error:

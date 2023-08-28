@@ -1,23 +1,18 @@
-import { App, Button, Card, ConfigProvider, Layout, message, theme } from "antd";
+import { Button, Card, message } from "antd";
 import copy from "copy-to-clipboard";
-import HeaderComponent from "../components/header";
-import React, { useState } from "react";
+import React from "react";
 import i18n from "../data/i18n";
 import Link from "next/link";
 
+const A = 1;
 export default function IndexPage() {
 
     const [messageApi, contextHolder] = message.useMessage();
-    const [dark, setDark] = useState(false);
     const { t } = i18n;
     const copyClick = () => {
         copy("/fc chat ");
         messageApi.success(t("message.copied")).then(() => messageApi);
     }
-    const {
-        token: { colorBgContainer }
-    } = theme.useToken()
-
     return (
         <>
             {contextHolder}
@@ -40,7 +35,7 @@ export default function IndexPage() {
                     } style={{ width: 400, margin: 'auto' }}>
                         <p>{t("home.generate")}</p>
                         · {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fc
-                            chat [displayName]</Button><br />
+                            chat [ID]</Button><br />
                         · {t("home.instruction2")}
                     </Card>
                 </div>
