@@ -1,10 +1,10 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
-import {demoStr} from "../../data/demo";
+import {demoStr} from "../data/demo";
 import {ConfigProvider, message} from "antd";
-import ErrorComponent from "../../components/error";
-import {ChatData} from "../../data/chatData";
-import ServerTableComponent from "../../components/table";
+import ErrorComponent from "../components/error";
+import {ChatData} from "../data/chatData";
+import ServerTableComponent from "../components/table";
 
 
 enum Status {
