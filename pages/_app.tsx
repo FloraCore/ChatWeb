@@ -25,7 +25,6 @@ function Entry({Component, pageProps}: AppProps) {
             >
                 <Head>
                     <meta charSet="UTF-8" />
-                    <html lang="en" />
                     <link rel="icon" href="/logo.svg" type="image/svg+xml" />
                     <title>FloraCore | 聊天记录查看器</title>
                     <meta name="description" content="The Web Page of Chat-Record-Query for FloraCore by Next.js" />
