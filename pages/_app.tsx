@@ -1,5 +1,8 @@
-import '../reset.css'
+import '../reset.css';
+import { AppProps } from 'next/app';
 
-export default function Entry({ Component, pageProps }) {
-    return <Component {...pageProps} />
-  }
+function Entry({ Component, pageProps }: AppProps) {
+    return <Component {...pageProps} />;
+}
+
+export default Entry;

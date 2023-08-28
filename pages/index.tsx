@@ -22,7 +22,7 @@ export default function IndexPage() {
                 theme={{
                     algorithm: dark ? theme.darkAlgorithm : theme.defaultAlgorithm,
                     token: {
-                        "borderRadius": 14,
+                        "borderRadius": 10,
                         "colorPrimary": "#009292",
                         "colorInfo": "#009292",
                         "colorError": "#da4648",
@@ -34,6 +34,7 @@ export default function IndexPage() {
                         <HeaderComponent setDark={setDark}/>
                     </Layout.Header>
                     <Layout.Content>
+                        {contextHolder}
                         <div style={{
                             display: 'flex',
                             justifyContent: 'center',

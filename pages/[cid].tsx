@@ -1,10 +1,11 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {demoStr} from "../data/demo";
-import {ConfigProvider, message} from "antd";
+import {ConfigProvider, Layout, message, theme} from "antd";
 import ErrorComponent from "../components/error";
 import {ChatData} from "../data/chatData";
 import ServerTableComponent from "../components/table";
+import HeaderComponent from "../components/header";
 
 
 enum Status {
@@ -22,6 +23,11 @@ export default function IndexPage() {
     const [data, setData] = useState<ChatData>();
     const [state, setLoadingState] = useState(Status.Init);
     const [messageApi, contextHolder] = message.useMessage();
+    const [dark, setDark] = useState(false);
+
+    const {
+        token: { colorBgContainer}
+    } = theme.useToken()
 
     const getComponent = () => {
         switch (state) {
@@ -106,16 +112,26 @@ export default function IndexPage() {
         <>
             <ConfigProvider
                 theme={{
+                    algorithm: dark ? theme.darkAlgorithm : theme.defaultAlgorithm,
                     token: {
-                        "borderRadius": 14,
+                        "borderRadius": 10,
                         "colorPrimary": "#009292",
                         "colorInfo": "#009292",
                         "colorError": "#da4648",
                     },
                 }}
             >
+                <Layout>
+                    <Layout.Header style={{ background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                        <HeaderComponent setDark={setDark} dark={dark} colorBgContainer={colorBgContainer}/>
+                    </Layout.Header>
+                    <Layout.Content>
                 {contextHolder}
-                {getComponent()}
+                <div style={{position: "relative", top: 20}}>
+                    {getComponent()}
+                </div>
+                    </Layout.Content>
+                </Layout>
             </ConfigProvider>
         </>
     )
