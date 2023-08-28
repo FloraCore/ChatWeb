@@ -46,12 +46,19 @@ export default function IndexPage() {
                             alignItems: 'center',
                             minHeight: '100vh',
                         }}>
-                            <Card title={t("home.title")} extra={<a href="/demo">{t("home.demo")}</a>} style={{width: 400, margin: 'auto'}}>
-                                <p>{t("home.generate")}</p>
-                                · {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fc
-                                chat [displayName]</Button><br/>
-                                · {t("home.instruction2")}
-                            </Card>
+                            <div style={{
+                                position: 'fixed',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                            }}>
+                                <Card title={t("home.title")} extra={<a href="/demo">{t("home.demo")}</a>} style={{width: 400, margin: 'auto'}}>
+                                    <p>{t("home.generate")}</p>
+                                    · {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fc
+                                    chat [displayName]</Button><br/>
+                                    · {t("home.instruction2")}
+                                </Card>
+                            </div>
                         </div>
                     </Layout.Content>
                 </Layout>
