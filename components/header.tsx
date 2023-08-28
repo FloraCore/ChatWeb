@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import {AppstoreOutlined, GithubOutlined, MailOutlined, SettingOutlined, TranslationOutlined} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
+import { MenuProps, theme } from 'antd';
 import {Button, Menu} from 'antd';
 import ToggleButton from "./toggle";
 import MoonIcon from "./moon";
@@ -48,7 +48,7 @@ export default function HeaderComponent({setDark}: HeaderProps){
     ];
 
     return (
-        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} theme='light' />
     );
 };
 
