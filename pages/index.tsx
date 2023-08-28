@@ -8,13 +8,13 @@ export default function IndexPage() {
 
     const [messageApi, contextHolder] = message.useMessage();
     const [dark, setDark] = useState(false);
-    const { t } = i18n;
+    const {t} = i18n;
     const copyClick = () => {
         copy("/fc chat ");
-            messageApi.success(t("message.copied")).then(() => messageApi);
+        messageApi.success(t("message.copied")).then(() => messageApi);
     }
     const {
-        token: { colorBgContainer}
+        token: {colorBgContainer}
     } = theme.useToken()
 
     return (
@@ -31,7 +31,11 @@ export default function IndexPage() {
                 }}
             >
                 <Layout>
-                    <Layout.Header style={{ background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                    <Layout.Header style={{
+                        background: dark ? '#141414' : colorBgContainer,
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr'
+                    }}>
                         <HeaderComponent setDark={setDark} dark={dark} colorBgContainer={colorBgContainer}></HeaderComponent>
                     </Layout.Header>
                     <Layout.Content>
@@ -42,10 +46,10 @@ export default function IndexPage() {
                             alignItems: 'center',
                             minHeight: '100vh',
                         }}>
-                            <Card title={t("home.title")} extra={<a href="/demo">{t("home.demo")}</a>}
-                                style={{width: 400, margin: 'auto'}}>
+                            <Card title={t("home.title")} extra={<a href="/demo">{t("home.demo")}</a>} style={{width: 400, margin: 'auto'}}>
                                 <p>{t("home.generate")}</p>
-                                · {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fc chat [displayName]</Button><br/>
+                                · {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fc
+                                chat [displayName]</Button><br/>
                                 · {t("home.instruction2")}
                             </Card>
                         </div>

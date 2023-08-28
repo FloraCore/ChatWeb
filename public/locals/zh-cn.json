@@ -1,15 +1,13 @@
 {
-    "home.title":"FloraCore 聊天查看器",
-    "home.demo":"查看演示",
-    "home.generate":"要生成详细聊天报告，请执行以下操作：",
+    "home.title": "FloraCore 聊天查看器",
+    "home.demo": "查看演示",
+    "home.generate": "要生成详细聊天报告，请执行以下操作：",
     "home.instruction1": "在游戏内或控制台中输入 ",
     "home.instruction2": "打开生成的URL",
-
     "meta.title": "链接信息",
     "meta.uploader": "上传者: ",
     "meta.target": "目标: ",
     "meta.time": "上传信息: ",
-
     "detail.title": "详细信息",
     "message.copied": "已复制到剪贴板"
 }

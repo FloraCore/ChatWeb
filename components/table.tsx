@@ -78,7 +78,6 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
                     <Descriptions items={descriptionItems}/>
                 </Card>
 
-                {/*<Collapse style={{width: 1000}} items={listItems} />*/}
                 <Card title={"详细信息"} style={{width: 1000}}>
                     <Tree
                         showLine

@@ -7,7 +7,6 @@ import {ChatData} from "../data/chatData";
 import ServerTableComponent from "../components/table";
 import HeaderComponent from "../components/header";
 
-
 enum Status {
     Init,
     Loading,
@@ -26,7 +25,7 @@ export default function IndexPage() {
     const [dark, setDark] = useState(false);
 
     const {
-        token: { colorBgContainer}
+        token: {colorBgContainer}
     } = theme.useToken()
 
     const getComponent = () => {
@@ -122,14 +121,18 @@ export default function IndexPage() {
                 }}
             >
                 <Layout>
-                    <Layout.Header style={{ background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                    <Layout.Header style={{
+                        background: dark ? '#141414' : colorBgContainer,
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr'
+                    }}>
                         <HeaderComponent setDark={setDark} dark={dark} colorBgContainer={colorBgContainer}/>
                     </Layout.Header>
                     <Layout.Content>
-                {contextHolder}
-                <div style={{position: "relative", top: 20}}>
-                    {getComponent()}
-                </div>
+                        {contextHolder}
+                        <div style={{position: "relative", top: 20}}>
+                            {getComponent()}
+                        </div>
                     </Layout.Content>
                 </Layout>
             </ConfigProvider>

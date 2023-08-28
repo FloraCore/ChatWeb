@@ -1,7 +1,6 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import {GithubOutlined, TranslationOutlined} from '@ant-design/icons';
-import {MenuProps} from 'antd';
-import {Menu} from 'antd';
+import {Menu, MenuProps} from 'antd';
 import ToggleButton from "./toggle";
 import MoonIcon from "./moon";
 import i18n from "../data/i18n";
@@ -21,9 +20,9 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
         }
         console.log(key);
     };
-    
+
     const backToHome = () => {
-        router.push("/");
+        router.push("/").then(() => backToHome());
     }
 
     let on = () => {
@@ -78,15 +77,21 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
     ];
 
     return (
-        <div style={{ background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+        <div style={{background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
             <div style={{cursor: "pointer"}} onClick={backToHome}>
                 <Logo color={dark ? colorBgContainer : '#141414'}/>
-                <a style={{position: "relative", left: 10, fontSize: 20, top: 2, color: dark ? colorBgContainer : '#141414'}}>
+                <a style={{
+                    position: "relative",
+                    left: 10,
+                    fontSize: 20,
+                    top: 2,
+                    color: dark ? colorBgContainer : '#141414'
+                }}>
                     FloraCore
                 </a>
             </div>
             <div style={{position: "absolute", right: 10, width: 480}}>
-                <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} theme='light' />
+                <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} theme='light'/>
             </div>
         </div>
     );

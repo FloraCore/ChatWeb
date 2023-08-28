@@ -1,10 +1,10 @@
 {
-    "compilerOptions": {
+  "compilerOptions": {
     "target": "es5",
     "lib": [
-        "dom",
-        "dom.iterable",
-        "esnext"
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -17,14 +17,14 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    },
-    "include": [
+    "jsx": "preserve"
+  },
+  "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-    ],
-    "exclude": [
+  ],
+  "exclude": [
     "node_modules"
-    ]
+  ]
 }

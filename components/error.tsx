@@ -15,7 +15,7 @@ export default function ErrorComponent() {
             <Result status="error" title="加载失败" subTitle="请参阅下面的提示重新获取"/>
             <Card style={{width: 400, margin: 'auto'}}>
                 · 在游戏内或控制台中输入 <Button type="dashed" size={"small"} onClick={copyClick}>/fc chat
-                [玩家名]</Button><br/>
+                [ID]</Button><br/>
                 · 执行需要权限到操作<br/>
                 · 打开生成到URL
             </Card>
