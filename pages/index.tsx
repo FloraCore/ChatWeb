@@ -1,7 +1,8 @@
-import {Button, Card, ConfigProvider, Layout, message, Space, theme, Menu, App} from "antd";
+import {App, Button, Card, ConfigProvider, Layout, message, theme} from "antd";
 import copy from "copy-to-clipboard";
 import HeaderComponent from "../components/header";
-import {useState} from "react";
+import React, {useState} from "react";
+import i18n from "../data/i18n";
 
 export default function IndexPage() {
 
@@ -30,8 +31,8 @@ export default function IndexPage() {
                 }}
             >
                 <Layout>
-                    <Layout.Header style={{background: dark ? '#141414' : colorBgContainer}}>
-                        <HeaderComponent setDark={setDark}/>
+                    <Layout.Header style={{ background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                        <HeaderComponent setDark={setDark} dark={dark} colorBgContainer={colorBgContainer}></HeaderComponent>
                     </Layout.Header>
                     <Layout.Content>
                         {contextHolder}
@@ -41,13 +42,11 @@ export default function IndexPage() {
                             alignItems: 'center',
                             minHeight: '100vh',
                         }}>
-                            {contextHolder}
-                            <Card title="FloraCore 聊天查看器" extra={<a href="/demo">查看演示</a>}
+                            <Card title={t("home.title")} extra={<a href="/demo">{t("home.demo")}</a>}
                                 style={{width: 400, margin: 'auto'}}>
-                                <p>要生成详细聊天报告，请执行以下操作：</p>
-                                · 在游戏内或控制台中输入 <Button type="dashed" size={"small"} onClick={copyClick}>/fc chat [玩家名]</Button><br/>
-                                · 执行需要权限到操作<br/>
-                                · 打开生成到URL
+                                <p>{t("home.generate")}</p>
+                                · {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fc chat [displayName]</Button><br/>
+                                · {t("home.instruction2")}
                             </Card>
                         </div>
                     </Layout.Content>

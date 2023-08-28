@@ -1,13 +1,16 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
-import {AppstoreOutlined, GithubOutlined, MailOutlined, SettingOutlined, TranslationOutlined} from '@ant-design/icons';
-import { MenuProps, theme } from 'antd';
-import {Button, Menu} from 'antd';
+import {GithubOutlined, TranslationOutlined} from '@ant-design/icons';
+import {MenuProps} from 'antd';
+import {Menu} from 'antd';
 import ToggleButton from "./toggle";
 import MoonIcon from "./moon";
+import i18n from "../data/i18n";
+import Logo from "./logo";
+import {useRouter} from "next/router";
 
-
-export default function HeaderComponent({setDark}: HeaderProps){
-    const [current, setCurrent] = useState('mail');
+export default function HeaderComponent({setDark, dark, colorBgContainer}: HeaderProps) {
+    const [current] = useState('mail');
+    const router = useRouter();
 
     const onClick: MenuProps['onClick'] = (e) => {
         let key = e.key;
@@ -23,7 +26,6 @@ export default function HeaderComponent({setDark}: HeaderProps){
         router.push("/");
     }
 
-
     let on = () => {
         setDark(true);
     }
@@ -32,6 +34,7 @@ export default function HeaderComponent({setDark}: HeaderProps){
     }
 
     const items: MenuProps['items'] = [
+
         {
             label: '聊天查看器',
             key: 'mail',
