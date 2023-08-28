@@ -5,11 +5,13 @@ import {useState} from "react";
 import {MappingAlgorithm} from "antd/es/theme/interface";
 
 export default function IndexPage() {
+
     const [messageApi, contextHolder] = message.useMessage();
     const [dark, setDark] = useState(false);
+    const { t } = i18n;
     const copyClick = () => {
         copy("/fc chat ");
-        messageApi.success("已复制到剪贴板").then(() => messageApi);
+            messageApi.success(t("message.copied")).then(() => messageApi);
     }
 
 

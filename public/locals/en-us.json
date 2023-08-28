@@ -1,0 +1,15 @@
+{
+    "home.title":"FloraCore Chat-Record Viewer",
+    "home.demo":"View demo",
+    "home.generate":"You can generate a Chat-Record by the following instructions:",
+    "home.instruction1": "Execute ",
+    "home.instruction2": "Open the URL generated in your browser",
+
+    "meta.title": "URL data",
+    "meta.uploader": "Uploader: ",
+    "meta.target": "Target: ",
+    "meta.time": "Upload time: ",
+
+    "detail.title": "Details",
+    "message.copied": "Copied to clipboard"
+}
