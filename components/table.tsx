@@ -4,9 +4,12 @@ import ChatListComponent from "./list";
 import type {DataNode} from 'antd/es/tree';
 import {DownOutlined} from "@ant-design/icons";
 import React, {useState} from "react";
+import i18n from "../data/i18n";
+
 
 export default function ServerTableComponent({data, metadata}: ChatData) {
     const [expanded, setExpanded] = useState<React.Key[]>([]);
+    const { t } = i18n;
 
     const onExpand = (expandedKeysValue: React.Key[]) => {
         setExpanded(expandedKeysValue);
@@ -24,17 +27,17 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
     const descriptionItems: DescriptionsProps['items'] = [
         {
             key: '1',
-            label: '上传者',
+            label: t("records.uploader"),
             children: <Space>{getUploaderAvatar(metadata.uploader.name)}{metadata.uploader.name}</Space>,
         },
         {
             key: '2',
-            label: '目标',
+            label: t("records.target"),
             children: <Space>{getUploaderAvatar(metadata.target)}{metadata.target}</Space>,
         },
         {
             key: '3',
-            label: '上传时间',
+            label: t("records.time"),
             children: metadata.time,
         }
     ];
@@ -74,11 +77,11 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
                 alignItems: 'center',
                 minHeight: '100vh',
             }}>
-                <Card title={"链接信息"} style={{maxWidth: 1000}}>
+                <Card title={t("records.information")} style={{maxWidth: 1000}}>
                     <Descriptions items={descriptionItems}/>
                 </Card>
 
-                <Card title={"详细信息"} style={{width: 1000}}>
+                <Card title={t("records.details")} style={{width: 1000}}>
                     <Tree
                         showLine
                         switcherIcon={<DownOutlined rev={undefined}></DownOutlined>}

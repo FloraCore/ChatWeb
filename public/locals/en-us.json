@@ -9,5 +9,14 @@
     "meta.target": "Target: ",
     "meta.time": "Upload time: ",
     "detail.title": "Details",
-    "message.copied": "Copied to clipboard"
+    "message.copied": "Copied to clipboard",
+    "header.chat-record": "Chat-Record Viewer",
+    "header.website": "Official Website",
+    "error.loading": "Loading error",
+    "error.prompts": "Please refer to the prompts below to retrieve",
+    "records.uploader": "Uploader",
+    "records.target": "Target",
+    "records.time": "Upload time",
+    "records.information": "Information",
+    "records.details": "Chat details"
 }

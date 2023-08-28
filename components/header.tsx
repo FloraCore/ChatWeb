@@ -10,6 +10,7 @@ import {useRouter} from "next/router";
 export default function HeaderComponent({setDark, dark, colorBgContainer}: HeaderProps) {
     const [current] = useState('mail');
     const router = useRouter();
+    const { t } = i18n;
 
     const onClick: MenuProps['onClick'] = (e) => {
         let key = e.key;
@@ -35,13 +36,13 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
     const items: MenuProps['items'] = [
 
         {
-            label: '聊天查看器',
+            label: t('header.chat-record'),
             key: 'mail',
         },
         {
             label: (
                 <a href="https://www.floracore.cc/" target="_blank" rel="noopener noreferrer">
-                    官方网站
+                    {t("header.website")}
                 </a>
             ),
             key: '1',
@@ -65,7 +66,7 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
                 },
                 {
                     key: "en",
-                    label: "英文"
+                    label: "English"
                 }
             ]
         },

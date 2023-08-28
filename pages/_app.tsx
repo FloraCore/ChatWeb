@@ -37,7 +37,6 @@ function Entry({Component, pageProps}: AppProps) {
             </ConfigProvider>
         </App>
     )
-    // return <Component {...pageProps} />;
 }
 
 export default Entry;

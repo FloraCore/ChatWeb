@@ -5,7 +5,6 @@ import i18n from "../data/i18n";
 import Link from "next/link";
 
 export default function IndexPage() {
-
     const [messageApi, contextHolder] = message.useMessage();
     const { t } = i18n;
     const copyClick = () => {
@@ -33,8 +32,7 @@ export default function IndexPage() {
                         </Link>
                     } style={{ width: 400, margin: 'auto' }}>
                         <p>{t("home.generate")}</p>
-                        · {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fc
-                            chat [ID]</Button><br />
+                        · {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fc chat [ID]</Button><br />
                         · {t("home.instruction2")}
                     </Card>
                 </div>
