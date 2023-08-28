@@ -18,5 +18,11 @@
     "records.target": "目标",
     "records.time": "上传时间",
     "records.information": "基础信息",
-    "records.details": "聊天记录详情"
+    "records.details": "聊天记录详情",
+    "prompt-box.loading": "加载中",
+    "prompt-box.load-successful": "加载成功",
+    "prompt-box.load-failed": "加载失败: ",
+    "prompt-box.load-failed-link": "加载失败: 无效链接",
+    "i18n.chinese": "简体中文",
+    "i18n.english": "英语"
 }

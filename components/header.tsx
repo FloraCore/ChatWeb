@@ -1,47 +1,45 @@
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import {GithubOutlined, TranslationOutlined} from '@ant-design/icons';
 import {Menu, MenuProps} from 'antd';
 import ToggleButton from "./toggle";
 import MoonIcon from "./moon";
-import i18n from "../data/i18n";
+import {useTranslation} from 'react-i18next';
 import Logo from "./logo";
 import {useRouter} from "next/router";
+import {changeLanguage} from "i18next";
 
 export default function HeaderComponent({setDark, dark, colorBgContainer}: HeaderProps) {
-    const [current] = useState('mail');
     const router = useRouter();
-    const { t } = i18n;
+    const {t, i18n} = useTranslation();
 
     const onClick: MenuProps['onClick'] = (e) => {
         let key = e.key;
-        if (key == "ch") {
-            i18n.changeLanguage("ch").then();
-        } else if (key == "en") {
-            i18n.changeLanguage("en").then();
+        if (key === "ch") {
+            i18n.changeLanguage("zh").then(() => changeLanguage());
+        } else if (key === "en") {
+            i18n.changeLanguage("en").then(() => changeLanguage());
         }
-        console.log(key);
     };
 
     const backToHome = () => {
         router.push("/").then(() => backToHome());
-    }
+    };
 
     let on = () => {
         setDark(true);
-    }
+    };
     let off = () => {
         setDark(false);
-    }
+    };
 
     const items: MenuProps['items'] = [
-
         {
             label: t('header.chat-record'),
             key: '0',
         },
         {
             label: (
-                <a href="https://www.floracore.cc/" target="_blank" rel="noopener noreferrer">
+                <a href="https://floracore.cc/" target="_blank" rel="noopener noreferrer">
                     {t("header.website")}
                 </a>
             ),
@@ -54,27 +52,35 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
                 </a>
             ),
             key: '2',
-            icon: <GithubOutlined rev={undefined}/>
+            icon: <GithubOutlined rev={undefined}/>,
         },
         {
             key: 'translation',
             label: <TranslationOutlined rev={undefined}/>,
             children: [
                 {
-                    key: "zh",
-                    label: "中文"
+                    key: 'zh',
+                    label: (
+                        <span onClick={() => i18n.changeLanguage('zh')} style={{cursor: 'pointer'}}>
+                            {t("i18n.chinese")}
+                        </span>
+                    ),
                 },
                 {
-                    key: "en",
-                    label: "English"
-                }
-            ]
+                    key: 'en',
+                    label: (
+                        <span onClick={() => i18n.changeLanguage('en')} style={{cursor: 'pointer'}}>
+                            {t("i18n.english")}
+                        </span>
+                    ),
+                },
+            ],
         },
         {
             key: "3",
             label: <ToggleButton type={"primary"} title={<MoonIcon/>} onToggleOn={on} onToggleOff={off}/>,
-            disabled: true
-        }
+            disabled: true,
+        },
     ];
 
     return (
@@ -86,13 +92,13 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
                     left: 10,
                     fontSize: 20,
                     top: 2,
-                    color: dark ? colorBgContainer : '#141414'
+                    color: dark ? colorBgContainer : '#141414',
                 }}>
                     FloraCore
                 </a>
             </div>
             <div style={{position: "absolute", right: 10, width: 480}}>
-                <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} theme='light'/>
+                <Menu onClick={onClick} mode="horizontal" items={items} theme='light'/>
             </div>
         </div>
     );
@@ -101,5 +107,5 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
 export interface HeaderProps {
     setDark: Dispatch<SetStateAction<boolean>>,
     dark: boolean,
-    colorBgContainer: string
+    colorBgContainer: string,
 }

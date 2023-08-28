@@ -18,5 +18,11 @@
     "records.target": "Target",
     "records.time": "Upload time",
     "records.information": "Information",
-    "records.details": "Chat details"
+    "records.details": "Chat details",
+    "prompt-box.loading": "Loading",
+    "prompt-box.load-successful": "Loaded successfully",
+    "prompt-box.load-failed": "Loaded failed: ",
+    "prompt-box.load-failed-link": "Loaded failed: Invalid link",
+    "i18n.chinese": "Chinese",
+    "i18n.english": "English"
 }

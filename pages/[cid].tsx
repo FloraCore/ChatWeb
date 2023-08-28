@@ -5,6 +5,7 @@ import {message} from "antd";
 import ErrorComponent from "../components/error";
 import {ChatData} from "../data/chatData";
 import ServerTableComponent from "../components/table";
+import i18n from "../data/i18n";
 
 enum Status {
     Init,
@@ -17,6 +18,7 @@ export default function IndexPage() {
     const router = useRouter()
     const {cid} = router.query;
     const messageKey = "loading";
+    const {t} = i18n;
 
     const [data, setData] = useState<ChatData>();
     const [state, setLoadingState] = useState(Status.Init);
@@ -38,14 +40,14 @@ export default function IndexPage() {
             messageApi.open({
                 key: messageKey,
                 type: "loading",
-                content: "加载中..."
+                content: t("prompt-box.loading")
             }).then(() => {
             });
 
             messageApi.open({
                 key: messageKey,
                 type: "loading",
-                content: "加载中..."
+                content: t("prompt-box.loading")
             }).then(() => {
             });
 
@@ -54,7 +56,7 @@ export default function IndexPage() {
                 messageApi.open({
                     key: messageKey,
                     type: 'success',
-                    content: '加载成功',
+                    content: t("prompt-box.load-successful"),
                     duration: 2,
                 }).then(() => {
                 });
@@ -68,7 +70,7 @@ export default function IndexPage() {
                             messageApi.open({
                                 key: messageKey,
                                 type: 'success',
-                                content: '加载成功',
+                                content: t("prompt-box.load-successful"),
                                 duration: 2,
                             }).then(() => {
                             });
@@ -77,7 +79,7 @@ export default function IndexPage() {
                             messageApi.open({
                                 key: messageKey,
                                 type: 'error',
-                                content: '加载失败: 链接无效',
+                                content: t("prompt-box.load-failed-link"),
                                 duration: 2,
                             }).then(() => {
                             });
@@ -89,7 +91,7 @@ export default function IndexPage() {
                         messageApi.open({
                             key: messageKey,
                             type: 'error',
-                            content: '加载失败: ' + reason,
+                            content: t("prompt-box.load-failed") + reason,
                             duration: 2,
                         }).then(() => {
                         });
