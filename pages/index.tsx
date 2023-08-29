@@ -19,7 +19,6 @@ export default function IndexPage() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                minHeight: '100vh',
             }}>
                 <div style={{
                     position: 'fixed',
