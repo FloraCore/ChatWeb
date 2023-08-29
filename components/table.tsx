@@ -72,6 +72,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
 
     return (
         <>
+            <br />
             <Row justify={"center"}>
                 <Col span={18} sm={24} md={20}>
                     <Space size={'middle'} direction="vertical">
