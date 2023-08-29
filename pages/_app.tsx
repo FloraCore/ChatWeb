@@ -2,11 +2,14 @@ import { App, ConfigProvider, Layout, theme } from 'antd';
 import '../reset.css';
 import {AppProps} from 'next/app';
 import HeaderComponent from '../components/header';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from "next/head";
 
 function Entry({Component, pageProps}: AppProps) {
     const [dark, setDark] = useState(false);
+    useEffect(()=>{
+        setDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    },[])
     const {
         token: {colorBgContainer}
     } = theme.useToken()
