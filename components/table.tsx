@@ -5,6 +5,7 @@ import type {DataNode} from 'antd/es/tree';
 import {DownOutlined} from "@ant-design/icons";
 import React, {useState} from "react";
 import i18n from "../data/i18n";
+import randomColor from "../data/randomColor";
 
 
 export default function ServerTableComponent({data, metadata}: ChatData) {
@@ -55,7 +56,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
         }
 
         treeData.push({
-            title: <div><Tag>{data[dataKey].type}</Tag>{data[dataKey].details}</div>,
+            title: <div><Tag color={randomColor(data[dataKey].type)}>{data[dataKey].type}</Tag>{data[dataKey].details}</div>,
             key: dataKey,
             children
         });
