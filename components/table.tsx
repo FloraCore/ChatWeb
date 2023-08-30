@@ -59,7 +59,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
         let children: DataNode[] = [];
         for (let chatsKey in chats) {
             children.push({
-                title: <div onClick={copyClick}>chats[chatsKey]</div>,
+                title: <div onClick={copyClick}>{chats[chatsKey]}</div>,
                 key: dataKey + " - " + chatsKey
             })
         }
