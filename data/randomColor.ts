@@ -63,6 +63,5 @@ export default function randomColor(seed: string) {
     let b = prefix(B.toString(16));
 
 
-    console.log(H, S, L);
     return `#${r}${g}${b}`;
 }
