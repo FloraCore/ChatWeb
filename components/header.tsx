@@ -79,7 +79,7 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
         },
         {
             key: "3",
-            label: <ToggleButton type={"primary"} title={<MoonIcon/>} onToggleOn={changeDarkMode} onToggleOff={changeDarkMode}/>,
+            label: <ToggleButton type={"primary"} title={<MoonIcon/>} onToggleOn={changeDarkMode} onToggleOff={changeDarkMode} defaultState={dark}/>,
             disabled: true,
         },
     ];
@@ -108,5 +108,5 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
 export interface HeaderProps {
     setDark: Dispatch<SetStateAction<boolean>>,
     dark: boolean,
-    colorBgContainer: string,
+    colorBgContainer: string
 }
