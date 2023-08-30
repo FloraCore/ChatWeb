@@ -1,14 +1,16 @@
 import {ChatData} from "../data/chatData";
-import {Avatar, Card, CollapseProps, Descriptions, DescriptionsProps, Space, Tag, Tree} from "antd";
+import {Avatar, Card, CollapseProps, Descriptions, DescriptionsProps, message, Space, Tag, Tree} from "antd";
 import ChatListComponent from "./list";
 import type {DataNode} from 'antd/es/tree';
 import {DownOutlined} from "@ant-design/icons";
-import React, {useState} from "react";
+import React, {MouseEventHandler, useState} from "react";
 import i18n from "../data/i18n";
 import randomColor from "../data/randomColor";
+import copy from "copy-to-clipboard";
 
 
 export default function ServerTableComponent({data, metadata}: ChatData) {
+    const [messageApi, contextHolder] = message.useMessage();
     const [expanded, setExpanded] = useState<React.Key[]>([]);
     const { t } = i18n;
 
@@ -45,12 +47,19 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
 
     const treeData: DataNode[] = [];
 
+    const copyClick: MouseEventHandler<HTMLDivElement> = (e) => {
+        if (e.target instanceof HTMLElement) {
+            copy(e.target.innerHTML);
+            messageApi.success(t("message.copied")).then(() => messageApi);
+        }
+    }
+
     for (let dataKey in data) {
         let chats = data[dataKey].content;
         let children: DataNode[] = [];
         for (let chatsKey in chats) {
             children.push({
-                title: chats[chatsKey],
+                title: <div onClick={copyClick}>chats[chatsKey]</div>,
                 key: dataKey + " - " + chatsKey
             })
         }
@@ -78,6 +87,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
                 alignItems: 'center',
                 minHeight: '100vh',
             }}>
+                {contextHolder}
                 <Card title={t("records.information")} style={{maxWidth: 1000}}>
                     <Descriptions items={descriptionItems}/>
                 </Card>
