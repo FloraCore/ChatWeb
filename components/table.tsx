@@ -9,7 +9,7 @@ import randomColor from "../data/randomColor";
 import copy from "copy-to-clipboard";
 
 export default function ServerTableComponent({data, metadata}: ChatData) {
-    const [messageApi] = message.useMessage();
+    const [messageApi, contextHolder] = message.useMessage();
     const [expanded, setExpanded] = useState<React.Key[]>([]);
     const {t} = i18n;
 
