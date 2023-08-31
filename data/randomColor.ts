@@ -1,4 +1,4 @@
-function srand(seed: number){
+function srand(seed: number) {
     return abs(Math.sin((seed * b) + a));
 }
 
