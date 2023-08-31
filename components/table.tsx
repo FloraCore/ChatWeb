@@ -48,8 +48,13 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
 
     const copyClick: MouseEventHandler<HTMLDivElement> = (e) => {
         if (e.target instanceof HTMLElement) {
-            copy(e.target.innerHTML);
-            messageApi.success(t("message.copied")).then(() => messageApi);
+            const text = e.target.innerHTML;
+            const match = text.match(/&gt; (.+)/);
+            if (match) {
+                const extractedText = match[1];
+                copy(extractedText);
+                messageApi.success(t("message.copied")).then(() => messageApi);
+            }
         }
     }
 
