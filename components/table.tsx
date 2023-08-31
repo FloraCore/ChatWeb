@@ -1,5 +1,5 @@
 import {ChatData} from "../data/chatData";
-import {Avatar, Card, Col, CollapseProps, Descriptions, DescriptionsProps, Row, Space, Tag, Tree} from "antd";
+import {Avatar, Card, Col, CollapseProps, Descriptions, DescriptionsProps, message, Row, Space, Tag, Tree} from "antd";
 import ChatListComponent from "./list";
 import type {DataNode} from 'antd/es/tree';
 import {DownOutlined} from "@ant-design/icons";
@@ -9,7 +9,7 @@ import randomColor from "../data/randomColor";
 import copy from "copy-to-clipboard";
 
 export default function ServerTableComponent({data, metadata}: ChatData) {
-    const [messageApi, contextHolder] = message.useMessage();
+    const [messageApi] = message.useMessage();
     const [expanded, setExpanded] = useState<React.Key[]>([]);
     const {t} = i18n;
 
@@ -23,7 +23,6 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
                 <Avatar shape="square" size="small" src={"https://minotar.net/avatar/" + name}/>
             </div>
         );
-
     }
 
     const descriptionItems: DescriptionsProps['items'] = [
