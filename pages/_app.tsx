@@ -33,7 +33,7 @@ function Entry({Component, pageProps}: AppProps) {
                 <Layout style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    height: '100vh'
+                    minHeight: '100vh'
                 }}>
                     <Layout.Header style={{
                         background: dark ? '#141414' : colorBgContainer,
