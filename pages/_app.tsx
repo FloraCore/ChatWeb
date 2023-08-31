@@ -38,12 +38,15 @@ function Entry({Component, pageProps}: AppProps) {
                     <Layout.Header style={{
                         background: dark ? '#141414' : colorBgContainer,
                         display: 'grid',
-                        gridTemplateColumns: '1fr 1fr'
+                        gridTemplateColumns: '1fr 1fr',
+                        position: 'fixed',
+                        width: '100vw'
                     }}>
                         <HeaderComponent setDark={setDark} dark={dark} colorBgContainer={colorBgContainer}></HeaderComponent>
                     </Layout.Header>
                     <Layout.Content style={{
-                        flexGrow: 1
+                        flexGrow: 1,
+                        marginTop: '64px'
                     }}>
                         <Component {...pageProps}/>
                     </Layout.Content>
