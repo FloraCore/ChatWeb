@@ -22,7 +22,7 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
     };
 
     const backToHome = () => {
-        router.push("/")
+        router.push("/");
     };
 
     const changeDarkMode = () => setDark(!dark);
