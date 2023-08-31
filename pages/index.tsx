@@ -9,7 +9,7 @@ export default function IndexPage() {
     const {t} = i18n;
     const demoPath = "/demo";
     const copyClick = () => {
-        copy("/fc chat ");
+        copy("/fcb ");
         messageApi.success(t("message.copied")).then(() => messageApi);
     }
     return (
@@ -32,8 +32,7 @@ export default function IndexPage() {
                         </Link>
                     } style={{width: 400, margin: 'auto'}}>
                         <p>{t("home.generate")}</p>
-                        ◆ {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fc chat
-                        [ID]</Button><br/>
+                        ◆ {t("home.instruction1")} <Button type="dashed" size={"small"} onClick={copyClick}>/fcb [ID]</Button><br/>
                         ◆ {t("home.instruction2")}
                     </Card>
                 </div>

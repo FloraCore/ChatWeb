@@ -2,12 +2,15 @@ import { App, Col, ConfigProvider, Grid, Layout, Row, theme } from 'antd';
 import '../reset.css';
 import {AppProps} from 'next/app';
 import HeaderComponent from '../components/header';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import Head from "next/head";
 import Column from 'antd/es/table/Column';
 
 function Entry({Component, pageProps}: AppProps) {
     const [dark, setDark] = useState(false);
+    useEffect(() => {
+        setDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }, [])
     const {
         token: {colorBgContainer}
     } = theme.useToken()
@@ -25,10 +28,10 @@ function Entry({Component, pageProps}: AppProps) {
                 }}
             >
                 <Head>
-                    <meta charSet="UTF-8" />
-                    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+                    <meta charSet="UTF-8"/>
+                    <link rel="icon" href="/logo.svg" type="image/svg+xml"/>
                     <title>FloraCore | 聊天记录查看器</title>
-                    <meta name="description" content="The Web Page of Chat-Record-Query for FloraCore by Next.js" />
+                    <meta name="description" content="The Web Page of Chat-Record-Query for FloraCore by Next.js"/>
                 </Head>
                 <Layout style={{
                     display: 'flex',

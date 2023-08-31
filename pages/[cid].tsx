@@ -101,7 +101,6 @@ export default function IndexPage() {
         }
     }, [cid]);
 
-
     return (
         <>
             {contextHolder}

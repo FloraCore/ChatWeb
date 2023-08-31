@@ -3,15 +3,17 @@ import {Avatar, Card, Col, CollapseProps, Descriptions, DescriptionsProps, Row, 
 import ChatListComponent from "./list";
 import type {DataNode} from 'antd/es/tree';
 import {DownOutlined} from "@ant-design/icons";
-import React, {useState} from "react";
+import React, {MouseEventHandler, useState} from "react";
 import i18n from "../data/i18n";
-
+import randomColor from "../data/randomColor";
+import copy from "copy-to-clipboard";
 
 export default function ServerTableComponent({data, metadata}: ChatData) {
+    const [messageApi, contextHolder] = message.useMessage();
     const [expanded, setExpanded] = useState<React.Key[]>([]);
-    const { t } = i18n;
+    const {t} = i18n;
 
-    const onExpand = (expandedKeysValue: React.Key[]) => {
+    const onExpand = (expandedKeysValue: React.Key[]): void => {
         setExpanded(expandedKeysValue);
     }
 
@@ -44,18 +46,30 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
 
     const treeData: DataNode[] = [];
 
+    const copyClick: MouseEventHandler<HTMLDivElement> = (e) => {
+        if (e.target instanceof HTMLElement) {
+            const text = e.target.innerHTML;
+            const match = text.match(/&gt; (.+)/);
+            if (match) {
+                const extractedText = match[1];
+                copy(extractedText);
+                messageApi.success(t("message.copied")).then(() => messageApi);
+            }
+        }
+    }
+
     for (let dataKey in data) {
         let chats = data[dataKey].content;
         let children: DataNode[] = [];
         for (let chatsKey in chats) {
             children.push({
-                title: chats[chatsKey],
+                title: <div onClick={copyClick}>{chats[chatsKey]}</div>,
                 key: dataKey + " - " + chatsKey
             })
         }
 
         treeData.push({
-            title: <div><Tag>{data[dataKey].type}</Tag>{data[dataKey].details}</div>,
+            title: <div> <Tag color={randomColor(data[dataKey].type)}>{data[dataKey].type}</Tag>{data[dataKey].details} </div>,
             key: dataKey,
             children
         });

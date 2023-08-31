@@ -1,10 +1,15 @@
 import {Button} from "antd";
-import {ReactNode, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import {ButtonType} from "antd/es/button";
 
-export default function ToggleButton({title, type, onToggleOn, onToggleOff}: SwitchButtonProps) {
+export default function ToggleButton({title, type, onToggleOn, onToggleOff, defaultState}: SwitchButtonProps) {
     let [state, setState] = useState<ButtonType>("dashed");
 
+    useEffect(() => {
+        if (defaultState) {
+            setState(type);
+        }
+    })
     let toggle = () => {
         if (state == "dashed") {
             setState(type);
@@ -26,5 +31,6 @@ export interface SwitchButtonProps {
     title: ReactNode,
     type: ButtonType,
     onToggleOn: () => void,
-    onToggleOff: () => void
+    onToggleOff: () => void,
+    defaultState?: boolean
 }
