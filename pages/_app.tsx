@@ -40,7 +40,8 @@ function Entry({Component, pageProps}: AppProps) {
                         display: 'grid',
                         gridTemplateColumns: '1fr 1fr',
                         position: 'fixed',
-                        width: '100vw'
+                        width: '100vw',
+                        zIndex: 1000
                     }}>
                         <HeaderComponent setDark={setDark} dark={dark} colorBgContainer={colorBgContainer}></HeaderComponent>
                     </Layout.Header>
