@@ -1,5 +1,5 @@
 import {ChatData} from "../data/chatData";
-import {Avatar, Card, CollapseProps, Descriptions, DescriptionsProps, message, Space, Tag, Tree} from "antd";
+import {Avatar, Card, Col, CollapseProps, Descriptions, DescriptionsProps, Row, Space, Tag, Tree} from "antd";
 import ChatListComponent from "./list";
 import type {DataNode} from 'antd/es/tree';
 import {DownOutlined} from "@ant-design/icons";
@@ -86,27 +86,26 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
 
     return (
         <>
-            <Space direction={"vertical"} style={{
-                display: 'flex',
-                alignItems: 'center',
-                minHeight: '100vh',
-            }}>
-                {contextHolder}
-                <Card title={t("records.information")} style={{maxWidth: 1000}}>
-                    <Descriptions items={descriptionItems}/>
-                </Card>
-
-                <Card title={t("records.details")} style={{width: 1000}}>
-                    <Tree
-                        showLine
-                        switcherIcon={<DownOutlined rev={undefined}></DownOutlined>}
-                        treeData={treeData}
-                        expandedKeys={expanded}
-                        onExpand={onExpand}
-                        selectable={false}
-                    />
-                </Card>
-            </Space>
+            <br />
+            <Row justify={"center"}>
+                <Col span={18} sm={24} md={20}>
+                    <Space size={'middle'} direction="vertical">
+                        <Card title={t("records.information")} style={{width: 'fit-content', maxWidth: '100%'}}>
+                            <Descriptions items={descriptionItems}/>
+                        </Card>
+                        <Card title={t("records.details")} bodyStyle={{wordBreak: 'break-all', width: '100%'}}>
+                            <Tree
+                                showLine
+                                switcherIcon={<DownOutlined rev={undefined}></DownOutlined>}
+                                treeData={treeData}
+                                expandedKeys={expanded}
+                                onExpand={onExpand}
+                                selectable={false}
+                            />
+                        </Card>
+                    </Space>
+                </Col>
+            </Row>
         </>
     )
 }

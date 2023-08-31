@@ -1,9 +1,10 @@
-import {App, ConfigProvider, Layout, theme} from 'antd';
+import { App, Col, ConfigProvider, Grid, Layout, Row, theme } from 'antd';
 import '../reset.css';
 import {AppProps} from 'next/app';
 import HeaderComponent from '../components/header';
 import {useEffect, useState} from 'react';
 import Head from "next/head";
+import Column from 'antd/es/table/Column';
 
 function Entry({Component, pageProps}: AppProps) {
     const [dark, setDark] = useState(false);
@@ -32,15 +33,25 @@ function Entry({Component, pageProps}: AppProps) {
                     <title>FloraCore | 聊天记录查看器</title>
                     <meta name="description" content="The Web Page of Chat-Record-Query for FloraCore by Next.js"/>
                 </Head>
-                <Layout>
+                <Layout style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: '100vh'
+                }}>
                     <Layout.Header style={{
                         background: dark ? '#141414' : colorBgContainer,
                         display: 'grid',
-                        gridTemplateColumns: '1fr 1fr'
+                        gridTemplateColumns: '1fr 1fr',
+                        position: 'fixed',
+                        width: '100vw',
+                        zIndex: 1000
                     }}>
                         <HeaderComponent setDark={setDark} dark={dark} colorBgContainer={colorBgContainer}></HeaderComponent>
                     </Layout.Header>
-                    <Layout.Content>
+                    <Layout.Content style={{
+                        flexGrow: 1,
+                        marginTop: '64px'
+                    }}>
                         <Component {...pageProps}/>
                     </Layout.Content>
                 </Layout>

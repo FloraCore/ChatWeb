@@ -104,7 +104,7 @@ export default function IndexPage() {
     return (
         <>
             {contextHolder}
-            <div style={{position: "relative", top: 20}}>
+            <div>
                 {getComponent()}
             </div>
         </>
