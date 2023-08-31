@@ -85,6 +85,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
 
     return (
         <>
+            {contextHolder}
             <br />
             <Row justify={"center"}>
                 <Col span={18} sm={24} md={20}>
