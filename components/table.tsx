@@ -8,13 +8,12 @@ import i18n from "../data/i18n";
 import randomColor from "../data/randomColor";
 import copy from "copy-to-clipboard";
 
-
 export default function ServerTableComponent({data, metadata}: ChatData) {
     const [messageApi, contextHolder] = message.useMessage();
     const [expanded, setExpanded] = useState<React.Key[]>([]);
-    const { t } = i18n;
+    const {t} = i18n;
 
-    const onExpand = (expandedKeysValue: React.Key[]) => {
+    const onExpand = (expandedKeysValue: React.Key[]): void => {
         setExpanded(expandedKeysValue);
     }
 
@@ -65,7 +64,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
         }
 
         treeData.push({
-            title: <div><Tag color={randomColor(data[dataKey].type)}>{data[dataKey].type}</Tag>{data[dataKey].details}</div>,
+            title: <div> <Tag color={randomColor(data[dataKey].type)}>{data[dataKey].type}</Tag>{data[dataKey].details} </div>,
             key: dataKey,
             children
         });
