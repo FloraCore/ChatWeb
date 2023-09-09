@@ -11,7 +11,6 @@ function Entry({ Component, pageProps }: AppProps) {
     const [dark, setDark] = useState(false);
     useEffect(() => {
         i18n.changeLanguage(navigator.language);
-        setDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
     }, [])
     const {
         token: { colorBgContainer }

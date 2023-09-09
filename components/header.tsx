@@ -1,11 +1,12 @@
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { GithubOutlined, TranslationOutlined } from '@ant-design/icons';
-import { Menu, MenuProps } from 'antd';
-import ToggleButton from "./toggle";
+import { Button, Menu, MenuProps } from 'antd';
 import MoonIcon from "./moon";
 import { useTranslation } from 'react-i18next';
 import Logo from "./logo";
 import { useRouter } from "next/router";
+
+const LOCALSTORAGE_TRISTATE_KEY = "APP_THEME_TRISTATE";
 
 export default function HeaderComponent({ setDark, dark, colorBgContainer }: HeaderProps) {
     const router = useRouter();
@@ -36,17 +37,45 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         router.push("/");
     };
 
-    const changeDarkMode = () => setDark(!dark);
-    // let on = () => {
-    //     setDark(true);
-    // };
-    // let off = () => {
-    //     setDark(false);
-    // };
-
     const itemsPropAdditionals = {
         style: { marginTop: 0 }
-    }
+    };
+
+    const triStateMapping = [
+        () => true,
+        () => false,
+        () => window.matchMedia('(prefers-color-scheme: dark)').matches
+    ];
+
+    const [triState, setTriState] = useState(1);
+    const triStateProvisionStatus = useRef(false);
+
+    const triStateIcons = [
+        <MoonIcon />, // Dark
+        <MoonIcon />, // Light
+        <div style={{ position: "relative" }}>
+            <MoonIcon />
+            <div style={{
+                position: "absolute",
+                right: 0,
+                top: 2,
+                fontSize: 7
+            }}>A</div>
+        </div>   // Auto
+    ];
+
+    const changeDarkMode = () => setTriState(item => (item + 1) % 3);
+
+    useEffect(() => {
+        setTriState(+(localStorage.getItem(LOCALSTORAGE_TRISTATE_KEY) || 0));
+        triStateProvisionStatus.current = true;
+    }, []);
+
+    useEffect(() => {
+        if (!triStateProvisionStatus.current) return;
+        localStorage.setItem(LOCALSTORAGE_TRISTATE_KEY, triState.toString());
+        setDark(triStateMapping[triState]());
+    }, [triState]);
 
     const items: MenuProps['items'] = [
         {
@@ -96,7 +125,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         },
         {
             key: "3",
-            label: <ToggleButton type={"primary"} title={<MoonIcon />} onToggleOn={changeDarkMode} onToggleOff={changeDarkMode} defaultState={dark} />,
+            label: <Button type={dark ? "primary" : "dashed"} size="small" onClick={changeDarkMode}>{triStateIcons[triState]}</Button>,
             disabled: true,
         },
     ].map(item => ({ ...item, ...itemsPropAdditionals }));
