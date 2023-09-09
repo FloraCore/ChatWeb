@@ -1,12 +1,12 @@
 import {Button, Card, message} from "antd";
 import copy from "copy-to-clipboard";
 import React from "react";
-import i18n from "../data/i18n";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function IndexPage() {
     const [messageApi, contextHolder] = message.useMessage();
-    const {t} = i18n;
+    const {t} = useTranslation();
     const demoPath = "/demo";
     const copyClick = () => {
         copy("/fcb ");

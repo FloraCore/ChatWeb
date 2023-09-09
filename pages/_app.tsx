@@ -1,18 +1,20 @@
 import { App, Col, ConfigProvider, Grid, Layout, Row, theme } from 'antd';
 import '../reset.css';
-import {AppProps} from 'next/app';
+import { AppProps } from 'next/app';
 import HeaderComponent from '../components/header';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import Head from "next/head";
 import Column from 'antd/es/table/Column';
+import i18n from '../data/i18n';
 
-function Entry({Component, pageProps}: AppProps) {
+function Entry({ Component, pageProps }: AppProps) {
     const [dark, setDark] = useState(false);
     useEffect(() => {
+        i18n.changeLanguage(navigator.language);
         setDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
     }, [])
     const {
-        token: {colorBgContainer}
+        token: { colorBgContainer }
     } = theme.useToken()
     return (
         <App>
@@ -28,10 +30,10 @@ function Entry({Component, pageProps}: AppProps) {
                 }}
             >
                 <Head>
-                    <meta charSet="UTF-8"/>
-                    <link rel="icon" href="/logo.svg" type="image/svg+xml"/>
+                    <meta charSet="UTF-8" />
+                    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
                     <title>FloraCore | 聊天记录查看器</title>
-                    <meta name="description" content="The Web Page of Chat-Record-Query for FloraCore by Next.js"/>
+                    <meta name="description" content="The Web Page of Chat-Record-Query for FloraCore by Next.js" />
                 </Head>
                 <Layout style={{
                     display: 'flex',
@@ -44,7 +46,8 @@ function Entry({Component, pageProps}: AppProps) {
                         gridTemplateColumns: '1fr 1fr',
                         position: 'fixed',
                         width: '100vw',
-                        zIndex: 1000
+                        zIndex: 1000,
+                        overflow: "hidden"
                     }}>
                         <HeaderComponent setDark={setDark} dark={dark} colorBgContainer={colorBgContainer}></HeaderComponent>
                     </Layout.Header>
@@ -52,7 +55,7 @@ function Entry({Component, pageProps}: AppProps) {
                         flexGrow: 1,
                         marginTop: '64px'
                     }}>
-                        <Component {...pageProps}/>
+                        <Component {...pageProps} />
                     </Layout.Content>
                 </Layout>
             </ConfigProvider>
