@@ -1,10 +1,9 @@
-import { App, Col, ConfigProvider, Grid, Layout, Row, theme } from 'antd';
+import { App, ConfigProvider, Layout, theme } from 'antd';
 import '../reset.css';
 import { AppProps } from 'next/app';
 import HeaderComponent from '../components/header';
 import { useEffect, useState } from 'react';
 import Head from "next/head";
-import Column from 'antd/es/table/Column';
 import i18n from '../data/i18n';
 
 function Entry({ Component, pageProps }: AppProps) {

@@ -68,7 +68,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
         }
 
         treeData.push({
-            title: <div> <Tag color={randomColor(data[dataKey].type)}>{data[dataKey].type}</Tag>{data[dataKey].details} </div>,
+            title: <div><Tag color={randomColor(data[dataKey].type)}>{data[dataKey].type}</Tag>{data[dataKey].details}</div>,
             key: dataKey,
             children
         });
@@ -86,7 +86,7 @@ export default function ServerTableComponent({data, metadata}: ChatData) {
     return (
         <>
             {contextHolder}
-            <br />
+            <br/>
             <Row justify={"center"}>
                 <Col span={18} sm={24} md={20}>
                     <Space size={'middle'} direction="vertical">

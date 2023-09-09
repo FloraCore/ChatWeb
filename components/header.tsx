@@ -1,16 +1,16 @@
-import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
-import { GithubOutlined, TranslationOutlined } from '@ant-design/icons';
-import { Button, Menu, MenuProps } from 'antd';
+import React, {Dispatch, SetStateAction, useEffect, useRef, useState} from 'react';
+import {GithubOutlined, TranslationOutlined} from '@ant-design/icons';
+import {Button, Menu, MenuProps} from 'antd';
 import MoonIcon from "./moon";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import Logo from "./logo";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 
 const LOCALSTORAGE_TRISTATE_KEY = "APP_THEME_TRISTATE";
 
-export default function HeaderComponent({ setDark, dark, colorBgContainer }: HeaderProps) {
+export default function HeaderComponent({setDark, dark, colorBgContainer}: HeaderProps) {
     const router = useRouter();
-    const { t, i18n } = useTranslation();
+    const {t, i18n} = useTranslation();
 
     const [width, setWidth] = useState<number | string>("100%");
     const ref = useRef(null);
@@ -37,8 +37,8 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         router.push("/");
     };
 
-    const itemsPropAdditionals = {
-        style: { marginTop: 0 }
+    const itemsPropAdditions = {
+        style: {marginTop: 0}
     };
 
     const triStateMapping = [
@@ -51,16 +51,17 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
     const triStateProvisionStatus = useRef(false);
 
     const triStateIcons = [
-        <MoonIcon />, // Dark
-        <MoonIcon />, // Light
-        <div style={{ position: "relative" }}>
-            <MoonIcon />
+        <MoonIcon/>, // Dark
+        <MoonIcon/>, // Light
+        <div style={{position: "relative"}}>
+            <MoonIcon/>
             <div style={{
                 position: "absolute",
                 right: 0,
                 top: 2,
                 fontSize: 7
-            }}>A</div>
+            }}>A
+            </div>
         </div>   // Auto
     ];
 
@@ -97,16 +98,16 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
                 </a>
             ),
             key: '2',
-            icon: <GithubOutlined rev={undefined} />,
+            icon: <GithubOutlined rev={undefined}/>,
         },
         {
             key: 'translation',
-            label: <TranslationOutlined rev={undefined} />,
+            label: <TranslationOutlined rev={undefined}/>,
             children: [
                 {
                     key: 'zh',
                     label: (
-                        <span style={{ cursor: 'pointer' }}>
+                        <span style={{cursor: 'pointer'}}>
                             {t("i18n.chinese")}
                         </span>
                     ),
@@ -115,7 +116,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
                 {
                     key: 'en',
                     label: (
-                        <span style={{ cursor: 'pointer' }}>
+                        <span style={{cursor: 'pointer'}}>
                             {t("i18n.english")}
                         </span>
                     ),
@@ -128,12 +129,12 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
             label: <Button type={dark ? "primary" : "dashed"} size="small" onClick={changeDarkMode}>{triStateIcons[triState]}</Button>,
             disabled: true,
         },
-    ].map(item => ({ ...item, ...itemsPropAdditionals }));
+    ].map(item => ({...item, ...itemsPropAdditions}));
 
     return (
-        <div style={{ background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-            <div style={{ cursor: "pointer" }} onClick={backToHome}>
-                <Logo color={dark ? colorBgContainer : '#141414'} />
+        <div style={{background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
+            <div style={{cursor: "pointer"}} onClick={backToHome}>
+                <Logo color={dark ? colorBgContainer : '#141414'}/>
                 <a style={{
                     position: "relative",
                     left: 10,
@@ -144,8 +145,8 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
                     FloraCore
                 </a>
             </div>
-            <div style={{ position: "absolute", right: 10, width, visibility: width === "100%" ? "hidden" : "visible" }} ref={ref}>
-                <Menu mode="horizontal" items={items} theme='light' />
+            <div style={{position: "absolute", right: 10, width, visibility: width === "100%" ? "hidden" : "visible"}} ref={ref}>
+                <Menu mode="horizontal" items={items} theme='light'/>
             </div>
         </div>
     );
