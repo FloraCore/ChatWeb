@@ -31,6 +31,7 @@ yarn run build
 - [Snowball_233](https://github.com/SnowballXueQiu)
 - [xLikeWATCHDOG](https://github.com/xLikeWATCHDOG)
 - [GaoNeng-wWw](https://github.com/GaoNeng-wWw)
+- [xSilver-Yang](https://github.com/xSilver-Yang)
 
 ## License
 
