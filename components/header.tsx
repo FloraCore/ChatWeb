@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import {GithubOutlined, TranslationOutlined} from '@ant-design/icons';
 import {Menu, MenuProps} from 'antd';
 import ToggleButton from "./toggle";
@@ -7,18 +7,23 @@ import {useTranslation} from 'react-i18next';
 import Logo from "./logo";
 import {useRouter} from "next/router";
 import {changeLanguage} from "i18next";
+import { useLocalStorage } from '../hooks/use-localstorage';
 
 export default function HeaderComponent({setDark, dark, colorBgContainer}: HeaderProps) {
     const router = useRouter();
     const {t, i18n} = useTranslation();
-
+    const [language, setLanguage] = useLocalStorage('i18nextLng', '');
+    useEffect(()=>{
+        if (language){
+            changeLanguage(language)
+        }
+    }, [])
     const onClick: MenuProps['onClick'] = (e) => {
         let key = e.key;
-        if (key === "ch") {
-            i18n.changeLanguage("zh").then(() => changeLanguage());
-        } else if (key === "en") {
-            i18n.changeLanguage("en").then(() => changeLanguage());
-        }
+        i18n.changeLanguage(key).then(() => {
+            changeLanguage(key)
+            setLanguage(key)
+        });
     };
 
     const backToHome = () => {
