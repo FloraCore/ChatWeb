@@ -85,7 +85,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
     const changeDarkMode = () => setTriState(item => (item + 1) % 3);
 
     useEffect(() => {
-        setTriState(+(localStorage.getItem(LOCALSTORAGE_TRISTATE_KEY) || 0));
+        setTriState(+(localStorage.getItem(LOCALSTORAGE_TRISTATE_KEY) || 2));
         triStateProvisionStatus.current = true;
     }, []);
 
