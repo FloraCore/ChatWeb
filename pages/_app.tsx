@@ -10,6 +10,9 @@ function Entry({ Component, pageProps }: AppProps) {
     const [dark, setDark] = useState(false);
     useEffect(() => {
         i18n.changeLanguage(navigator.language);
+        setTimeout(() => {
+            ((window as any)["_HANDLER_STARTUP_FINISHED_"])();
+        }, 0);
     }, [])
     const {
         token: { colorBgContainer }
