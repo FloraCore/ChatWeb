@@ -89,7 +89,7 @@ const Placeholder = () => {
             <div id="App-Loader-Content">
                 <Logo color="currentColor" style={{ transform: "scale(5)", marginBottom: 100 }} />
 
-                <div className="App-Loading">
+                <div className="App-Loading" style={{ transform: "scale(.65)" }}>
                     <svg className="App-Loading-Circular">
                         <circle className="App-Loading-Circular-Path" cx="50" cy="50" r="20" fill="none" strokeWidth="3" strokeMiterlimit="10" />
                     </svg>
