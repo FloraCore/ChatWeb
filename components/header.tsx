@@ -48,8 +48,9 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         const onChange = (e: MediaQueryListEvent) => setColorPreferenceDark(e.matches);
 
         const m = window.matchMedia("(prefers-color-scheme: dark)");
-        m.addEventListener("change", onChange);
+        setColorPreferenceDark(m.matches);
 
+        m.addEventListener("change", onChange);
         return () => m.removeEventListener("change", onChange);
     }, []);
 
@@ -67,9 +68,9 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
     const triStateProvisionStatus = useRef(false);
 
     const triStateIcons = [
-        <MoonIcon />, // Dark
-        <MoonIcon />, // Light
-        <div style={{ position: "relative" }}>
+        () => <MoonIcon />, // Dark
+        () => <MoonIcon />, // Light
+        () => <div style={{ position: "relative" }}>
             <MoonIcon />
             <div style={{
                 position: "absolute",
@@ -92,7 +93,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         if (!triStateProvisionStatus.current) return;
         localStorage.setItem(LOCALSTORAGE_TRISTATE_KEY, triState.toString());
         setDark(triStateMapping[triState]);
-    }, [triStateMapping[triState]]);
+    }, [triState, triState === 2 && colorPreferenceDark]);
 
     const items: MenuProps['items'] = [
         {
@@ -142,7 +143,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         },
         {
             key: "3",
-            label: <Button type={dark ? "primary" : "dashed"} size="small" onClick={changeDarkMode}>{triStateIcons[triState]}</Button>,
+            label: <Button type={dark ? "primary" : "dashed"} size="small" onClick={changeDarkMode}>{triStateIcons[triState]()}</Button>,
             disabled: true,
         },
     ].map(item => ({ ...item, ...itemsPropAdditions }));
