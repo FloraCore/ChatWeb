@@ -9,7 +9,7 @@ import i18n from '../data/i18n';
 function Entry({ Component, pageProps }: AppProps) {
     const [dark, setDark] = useState(false);
     useEffect(() => {
-        i18n.changeLanguage(navigator.language);
+        i18n.changeLanguage(localStorage.getItem("APP_SELECTED_LANGUAGE") || "zh");
         setTimeout(
             (window as any)["_HANDLER_STARTUP_FINISHED_"],
             100 // TODO: A workaround.

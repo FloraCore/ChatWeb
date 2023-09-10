@@ -96,6 +96,11 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         setDark(triStateMapping[triState]);
     }, [triState, triState === 2 && colorPreferenceDark]);
 
+    const onChangeLanguage = (lang: string) => {
+        i18n.changeLanguage(lang);
+        localStorage.setItem("APP_SELECTED_LANGUAGE", lang);
+    };
+
     const items: MenuProps['items'] = [
         {
             label: t('header.chat-record'),
@@ -129,7 +134,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
                             {t("i18n.chinese")}
                         </span>
                     ),
-                    onClick: () => i18n.changeLanguage('zh')
+                    onClick: () => onChangeLanguage("zh")
                 },
                 {
                     key: 'en',
@@ -138,7 +143,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
                             {t("i18n.english")}
                         </span>
                     ),
-                    onClick: () => i18n.changeLanguage('en')
+                    onClick: () => onChangeLanguage("en")
                 },
             ],
         },
