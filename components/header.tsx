@@ -5,6 +5,7 @@ import MoonIcon from "./moon";
 import { useTranslation } from 'react-i18next';
 import Logo from "./logo";
 import { useRouter } from "next/router";
+import AutoIcon from './autoicon';
 
 const LOCALSTORAGE_TRISTATE_KEY = "APP_THEME_TRISTATE";
 
@@ -72,13 +73,13 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         () => <MoonIcon />, // Light
         () => <div style={{ position: "relative" }}>
             <MoonIcon />
-            <div style={{
+            <AutoIcon style={{
                 position: "absolute",
-                right: 0,
-                top: 2,
-                fontSize: 7
-            }}>A
-            </div>
+                right: -2,
+                top: 4,
+                width: 7,
+                height: 7
+            }} />
         </div>   // Auto
     ];
 

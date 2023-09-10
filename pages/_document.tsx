@@ -97,7 +97,7 @@ const Placeholder = () => {
             </div>
         </div>
         <script dangerouslySetInnerHTML={{
-            __html: `window._HANDLER_STARTUP_FINISHED_=()=>window["App-Loader"].style.display='none';`
+            __html: `window._HANDLER_STARTUP_FINISHED_=function(){window["App-Loader"].remove();}`
         }} /></>
 };
 
