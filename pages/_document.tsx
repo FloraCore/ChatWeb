@@ -97,7 +97,7 @@ const Placeholder = () => {
             </div>
         </div>
         <script dangerouslySetInnerHTML={{
-            __html: `window._HANDLER_STARTUP_FINISHED_=function(){window["App-Loader"].remove();}`
+            __html: `window._HANDLER_STARTUP_FINISHED_=function(){window["App-Loader"].remove();window._HANDLER_STARTUP_FINISHED_=function(){}}`
         }} /></>
 };
 
@@ -110,7 +110,7 @@ export default class CustomDocument extends Document {
             originalRenderPage({
                 enhanceApp: App => props =>
                 (
-                    <StyleProvider cache={cache}>
+                    <StyleProvider cache={cache} hashPriority="high">
                         <App {...props} />
                     </StyleProvider>
                 ),
