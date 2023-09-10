@@ -1,16 +1,16 @@
-import React, {Dispatch, SetStateAction, useEffect, useRef, useState} from 'react';
-import {GithubOutlined, TranslationOutlined} from '@ant-design/icons';
-import {Button, Menu, MenuProps} from 'antd';
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { GithubOutlined, TranslationOutlined } from '@ant-design/icons';
+import { Button, Menu, MenuProps } from 'antd';
 import MoonIcon from "./moon";
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import Logo from "./logo";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 const LOCALSTORAGE_TRISTATE_KEY = "APP_THEME_TRISTATE";
 
-export default function HeaderComponent({setDark, dark, colorBgContainer}: HeaderProps) {
+export default function HeaderComponent({ setDark, dark, colorBgContainer }: HeaderProps) {
     const router = useRouter();
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const [width, setWidth] = useState<number | string>("100%");
     const ref = useRef(null);
@@ -24,37 +24,53 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
 
         const fn = () => {
             const childrenWidth = [...(el.children as any as Array<HTMLElement>)].reduce((prev, curr) => prev + curr.offsetWidth, 0);
-            setWidth(childrenWidth);
+            setWidth(Math.min(childrenWidth, window.innerWidth - 200));
         };
 
         const ob = new ResizeObserver(fn);
         ob.observe(el.children[0]);
 
-        return () => ob.disconnect();
+        window.addEventListener("resize", fn);
+
+        return () => {
+            ob.disconnect();
+            window.removeEventListener("resize", fn);
+        }
     }, []);
 
     const backToHome = () => {
         router.push("/");
     };
 
+    const [colorPreferenceDark, setColorPreferenceDark] = useState(false);
+
+    useEffect(() => {
+        const onChange = (e: MediaQueryListEvent) => setColorPreferenceDark(e.matches);
+
+        const m = window.matchMedia("(prefers-color-scheme: dark)");
+        m.addEventListener("change", onChange);
+
+        return () => m.removeEventListener("change", onChange);
+    }, []);
+
     const itemsPropAdditions = {
-        style: {marginTop: 0}
+        style: { marginTop: 0 }
     };
 
     const triStateMapping = [
-        () => true,
-        () => false,
-        () => window.matchMedia('(prefers-color-scheme: dark)').matches
+        true,
+        false,
+        colorPreferenceDark
     ];
 
     const [triState, setTriState] = useState(1);
     const triStateProvisionStatus = useRef(false);
 
     const triStateIcons = [
-        <MoonIcon/>, // Dark
-        <MoonIcon/>, // Light
-        <div style={{position: "relative"}}>
-            <MoonIcon/>
+        <MoonIcon />, // Dark
+        <MoonIcon />, // Light
+        <div style={{ position: "relative" }}>
+            <MoonIcon />
             <div style={{
                 position: "absolute",
                 right: 0,
@@ -75,8 +91,8 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
     useEffect(() => {
         if (!triStateProvisionStatus.current) return;
         localStorage.setItem(LOCALSTORAGE_TRISTATE_KEY, triState.toString());
-        setDark(triStateMapping[triState]());
-    }, [triState]);
+        setDark(triStateMapping[triState]);
+    }, [triStateMapping[triState]]);
 
     const items: MenuProps['items'] = [
         {
@@ -98,16 +114,16 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
                 </a>
             ),
             key: '2',
-            icon: <GithubOutlined rev={undefined}/>,
+            icon: <GithubOutlined rev={undefined} />,
         },
         {
             key: 'translation',
-            label: <TranslationOutlined rev={undefined}/>,
+            label: <TranslationOutlined rev={undefined} />,
             children: [
                 {
                     key: 'zh',
                     label: (
-                        <span style={{cursor: 'pointer'}}>
+                        <span style={{ cursor: 'pointer' }}>
                             {t("i18n.chinese")}
                         </span>
                     ),
@@ -116,7 +132,7 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
                 {
                     key: 'en',
                     label: (
-                        <span style={{cursor: 'pointer'}}>
+                        <span style={{ cursor: 'pointer' }}>
                             {t("i18n.english")}
                         </span>
                     ),
@@ -129,12 +145,12 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
             label: <Button type={dark ? "primary" : "dashed"} size="small" onClick={changeDarkMode}>{triStateIcons[triState]}</Button>,
             disabled: true,
         },
-    ].map(item => ({...item, ...itemsPropAdditions}));
+    ].map(item => ({ ...item, ...itemsPropAdditions }));
 
     return (
-        <div style={{background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
-            <div style={{cursor: "pointer"}} onClick={backToHome}>
-                <Logo color={dark ? colorBgContainer : '#141414'}/>
+        <div style={{ background: dark ? '#141414' : colorBgContainer, display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+            <div style={{ cursor: "pointer" }} onClick={backToHome}>
+                <Logo color={dark ? colorBgContainer : '#141414'} />
                 <a style={{
                     position: "relative",
                     left: 10,
@@ -145,8 +161,8 @@ export default function HeaderComponent({setDark, dark, colorBgContainer}: Heade
                     FloraCore
                 </a>
             </div>
-            <div style={{position: "absolute", right: 10, width, visibility: width === "100%" ? "hidden" : "visible"}} ref={ref}>
-                <Menu mode="horizontal" items={items} theme='light'/>
+            <div style={{ position: "absolute", right: 10, width, visibility: width === "100%" ? "hidden" : "visible" }} ref={ref}>
+                <Menu mode="horizontal" items={items} theme='light' style={{ borderBottom: "none" }} />
             </div>
         </div>
     );
