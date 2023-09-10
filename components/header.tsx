@@ -48,8 +48,9 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         const onChange = (e: MediaQueryListEvent) => setColorPreferenceDark(e.matches);
 
         const m = window.matchMedia("(prefers-color-scheme: dark)");
-        m.addEventListener("change", onChange);
+        setColorPreferenceDark(m.matches);
 
+        m.addEventListener("change", onChange);
         return () => m.removeEventListener("change", onChange);
     }, []);
 
@@ -92,7 +93,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         if (!triStateProvisionStatus.current) return;
         localStorage.setItem(LOCALSTORAGE_TRISTATE_KEY, triState.toString());
         setDark(triStateMapping[triState]);
-    }, [triStateMapping[triState]]);
+    }, [triState, colorPreferenceDark]);
 
     const items: MenuProps['items'] = [
         {
