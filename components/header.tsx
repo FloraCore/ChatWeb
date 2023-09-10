@@ -58,9 +58,9 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
     };
 
     const triStateMapping = [
-        () => true,
-        () => false,
-        () => colorPreferenceDark
+        true,
+        false,
+        colorPreferenceDark
     ];
 
     const [triState, setTriState] = useState(1);
@@ -91,7 +91,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
     useEffect(() => {
         if (!triStateProvisionStatus.current) return;
         localStorage.setItem(LOCALSTORAGE_TRISTATE_KEY, triState.toString());
-        setDark(triStateMapping[triState]());
+        setDark(triStateMapping[triState]);
     }, [triStateMapping[triState]]);
 
     const items: MenuProps['items'] = [
