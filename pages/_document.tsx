@@ -5,7 +5,7 @@ import Logo from '../components/logo';
 const Placeholder = () => {
     return <>
         <style dangerouslySetInnerHTML={{
-            __html: `
+            __html: `body { display: block; }
         #App-Loader {
             position: fixed;
             left: 0;
@@ -135,9 +135,10 @@ export default class CustomDocument extends Document {
     render() {
         return (
             <Html>
-                <Head />
-                <body>
+                <Head>
                     <Placeholder />
+                </Head>
+                <body>
                     <Main />
                     <NextScript />
                 </body>
