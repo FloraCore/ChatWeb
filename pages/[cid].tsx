@@ -5,7 +5,7 @@ import {message} from "antd";
 import ErrorComponent from "../components/error";
 import {ChatData} from "../data/chatData";
 import ServerTableComponent from "../components/table";
-import i18n from "../data/i18n";
+import { useTranslation } from "react-i18next";
 
 enum Status {
     Init,
@@ -18,7 +18,7 @@ export default function IndexPage() {
     const router = useRouter()
     const {cid} = router.query;
     const messageKey = "loading";
-    const {t} = i18n;
+    const {t} = useTranslation();
 
     const [data, setData] = useState<ChatData>();
     const [state, setLoadingState] = useState(Status.Init);
