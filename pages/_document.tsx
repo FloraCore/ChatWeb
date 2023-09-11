@@ -49,18 +49,16 @@ const Placeholder = () => {
             stroke: black;
           }
           
-          @media (prefers-color-scheme: dark) {
-            .App-Loading-Circular-Path {
+          .__STARTUP_DARK_ENFORCEMENT .App-Loading-Circular-Path {
                 stroke: white;
-            }
+          }
 
-            #App-Loader {
+          .__STARTUP_DARK_ENFORCEMENT#App-Loader {
                 background: black;
-            }
+          }
 
-            #App-Loader-Content {
+          .__STARTUP_DARK_ENFORCEMENT #App-Loader-Content {
                 color: white;
-            }
           }
 
           @keyframes rotate {
@@ -87,9 +85,9 @@ const Placeholder = () => {
         ` }} />
         <div id="App-Loader">
             <div id="App-Loader-Content">
-                <Logo color="currentColor" style={{ transform: "scale(5)" }} />
+                <Logo color="currentColor" style={{ transform: "scale(5)", marginBottom: 100 }} />
 
-                <div className="App-Loading">
+                <div className="App-Loading" style={{ transform: "scale(.65)" }}>
                     <svg className="App-Loading-Circular">
                         <circle className="App-Loading-Circular-Path" cx="50" cy="50" r="20" fill="none" strokeWidth="3" strokeMiterlimit="10" />
                     </svg>
@@ -97,8 +95,27 @@ const Placeholder = () => {
             </div>
         </div>
         <script dangerouslySetInnerHTML={{
-            __html: `window._HANDLER_STARTUP_FINISHED_=()=>window["App-Loader"].style.display='none';`
-        }} /></>
+            __html: `window._HANDLER_STARTUP_FINISHED_ = function() {
+                window["App-Loader"].remove();
+                window._HANDLER_STARTUP_FINISHED_ = function() {};
+            };
+            
+            !function () {
+                var triStateType = +(localStorage.getItem("APP_THEME_TRISTATE") || 2);
+
+                var isDark;
+                if (triStateType === 2) {
+                    isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                } else if (triStateType === 1) isDark = false;
+                else isDark = true;
+
+                if (isDark) {
+                    window["App-Loader"].classList.add("__STARTUP_DARK_ENFORCEMENT");
+                }
+            }();
+            `
+        }} />
+    </>
 };
 
 export default class CustomDocument extends Document {
@@ -110,7 +127,7 @@ export default class CustomDocument extends Document {
             originalRenderPage({
                 enhanceApp: App => props =>
                 (
-                    <StyleProvider cache={cache}>
+                    <StyleProvider cache={cache} hashPriority="high">
                         <App {...props} />
                     </StyleProvider>
                 ),

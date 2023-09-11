@@ -5,6 +5,7 @@ import MoonIcon from "./moon";
 import { useTranslation } from 'react-i18next';
 import Logo from "./logo";
 import { useRouter } from "next/router";
+import AutoIcon from './autoicon';
 
 const LOCALSTORAGE_TRISTATE_KEY = "APP_THEME_TRISTATE";
 
@@ -72,13 +73,13 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         () => <MoonIcon />, // Light
         () => <div style={{ position: "relative" }}>
             <MoonIcon />
-            <div style={{
+            <AutoIcon style={{
                 position: "absolute",
-                right: 0,
-                top: 2,
-                fontSize: 7
-            }}>A
-            </div>
+                right: -2,
+                top: 4,
+                width: 7,
+                height: 7
+            }} />
         </div>   // Auto
     ];
 
@@ -94,6 +95,11 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
         localStorage.setItem(LOCALSTORAGE_TRISTATE_KEY, triState.toString());
         setDark(triStateMapping[triState]);
     }, [triState, triState === 2 && colorPreferenceDark]);
+
+    const onChangeLanguage = (lang: string) => {
+        i18n.changeLanguage(lang);
+        localStorage.setItem("APP_SELECTED_LANGUAGE", lang);
+    };
 
     const items: MenuProps['items'] = [
         {
@@ -128,7 +134,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
                             {t("i18n.chinese")}
                         </span>
                     ),
-                    onClick: () => i18n.changeLanguage('zh')
+                    onClick: () => onChangeLanguage("zh")
                 },
                 {
                     key: 'en',
@@ -137,7 +143,7 @@ export default function HeaderComponent({ setDark, dark, colorBgContainer }: Hea
                             {t("i18n.english")}
                         </span>
                     ),
-                    onClick: () => i18n.changeLanguage('en')
+                    onClick: () => onChangeLanguage("en")
                 },
             ],
         },
